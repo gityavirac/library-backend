@@ -9,6 +9,9 @@ services:
     ports:
       - "4000:4000"
 
+     volumes:
+      - ../public/uploads:/app/public/uploads
+    
     restart: unless-stopped
 
     env_file:
