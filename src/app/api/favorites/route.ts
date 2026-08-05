@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
             select: {bookId: true},
             orderBy: {createdAt: 'desc'},
         });
-        return ok(favorites.map((f: any) => f.bookId));
+        return ok(favorites.map(f => f.bookId));
     });
 }
 
