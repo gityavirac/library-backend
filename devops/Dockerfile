@@ -1,4 +1,4 @@
-FROM node:24-alpine AS build
+FROM node:24-alpine
 
 WORKDIR /app
 
@@ -12,17 +12,8 @@ RUN npx prisma generate
 
 RUN npm run build
 
-
-FROM node:24-alpine
-
-WORKDIR /app
-
 ENV NODE_ENV=production
-
-COPY --from=build /app/.next/standalone ./
-COPY --from=build /app/.next/static ./.next/static
-COPY --from=build /app/public ./public
 
 EXPOSE 4000
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
