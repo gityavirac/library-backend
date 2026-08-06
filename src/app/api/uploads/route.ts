@@ -34,9 +34,10 @@ export async function POST(req: NextRequest) {
         console.log('Entró a uploadFile');
 
         console.log('cwd:', process.cwd());
-        console.log('dir:', dir);
+
 
         const dir = path.join(process.cwd(), 'public', 'uploads', folder);
+        console.log('dir:', dir);
         await mkdir(dir, {recursive: true});
         await writeFile(path.join(dir, fileName), bytes);
 
