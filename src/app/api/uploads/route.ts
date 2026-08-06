@@ -3,6 +3,7 @@ import {writeFile, mkdir} from 'fs/promises';
 import path from 'path';
 import {getAuthUser, hasRole, UPLOAD_ROLES} from '@/lib/auth';
 import {ok, fail, withErrors} from '@/lib/http';
+import {existsSync} from "node:fs";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -41,6 +42,7 @@ export async function POST(req: NextRequest) {
         await mkdir(dir, {recursive: true});
         await writeFile(path.join(dir, fileName), bytes);
 
+        console.log('Existe inmediatamente:', existsSync(path.join(dir, fileName)));
         return ok({url: `/uploads/${folder}/${fileName}`}, 201);
     });
 }
