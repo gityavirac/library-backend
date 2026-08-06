@@ -14,7 +14,7 @@ export function middleware(req: NextRequest) {
   res.headers.set('Access-Control-Allow-Origin', ORIGIN);
   res.headers.set('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
   res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.headers.set('Access-Control-Max-Age', '86400');
+  // res.headers.set('Access-Control-Max-Age', '86400');
   return res;
 }
 
